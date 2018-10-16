@@ -85,6 +85,10 @@ def draw_menu(stdscr):
             curses.flash()
             cursor_y = min(cursor_y, 9)
 
+        if cursor_y == 4 and curses.KEY_ENTER:
+            main_pain = stdscr.subwin(11, 0)
+            main_pain.move(1, 1)
+            main_pain.refresh()
 
         # Declaration of strings & Centeqring calculations
         main_pain = "main"[:width - 1]
