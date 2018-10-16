@@ -1,6 +1,23 @@
 import sys, os
 import curses
 
+show_list = '''show list'''
+
+command_list = \
+    '''
+    1st command
+    2nd command
+    etc
+    
+    help
+    exit
+    '''
+
+show_help = \
+    '''
+    show help
+    '''
+
 
 def draw_menu(stdscr):
     user_input = 0
@@ -60,7 +77,6 @@ def draw_menu(stdscr):
         start_x_main_pain = int((width // 2) - (len(main_pain) // 2) - len(main_pain) % 2)
         start_y_main_pain = int(((height // 3) * 2) - 2)
 
-        show_list = 'show list'
         start_x_list = int((width // 2) - (len(show_list) // 2) - len(show_list) % 2)
         start_y_list = int((height // 6) - 2)
 
@@ -81,6 +97,7 @@ def draw_menu(stdscr):
 
         stdscr.addstr(height - 1, 0, status_bar, curses.color_pair(3))
         stdscr.addstr(10, 1, v_line, curses.color_pair(4))
+        stdscr.addstr(3, 1, command_list)
 
         stdscr.attron(curses.A_BOLD)
 
