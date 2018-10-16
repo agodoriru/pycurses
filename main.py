@@ -5,10 +5,6 @@ show_list = '''show list'''
 
 command_list = \
     '''
-    1st command
-    2nd command
-    etc
-    
     help
     exit
     '''
@@ -17,6 +13,20 @@ show_help = \
     '''
     show help
     '''
+
+
+def command_1(stdscr, y):
+    if y == 4:
+        stdscr.addstr(y, 1, "command 1", curses.color_pair(3))
+    else:
+        stdscr.addstr(4, 1, "command 1")
+
+
+def command_2(stdscr, y):
+    if y == 5:
+        stdscr.addstr(y, 1, "command 2", curses.color_pair(3))
+    else:
+        stdscr.addstr(5, 1, "command 2")
 
 
 def draw_menu(stdscr):
@@ -97,13 +107,14 @@ def draw_menu(stdscr):
 
         stdscr.addstr(height - 1, 0, status_bar, curses.color_pair(3))
         stdscr.addstr(10, 1, v_line, curses.color_pair(4))
-        stdscr.addstr(3, 1, command_list)
+        stdscr.addstr(5, 1, command_list)
+
+        command_1(stdscr, cursor_y)
+        command_2(stdscr, cursor_y)
 
         stdscr.attron(curses.A_BOLD)
-
         stdscr.addstr(start_y_main_pain, start_x_main_pain, main_pain, curses.color_pair(1))
         stdscr.addstr(start_y_list, start_x_list, show_list, curses.color_pair(2))
-
         stdscr.attroff(curses.A_BOLD)
 
         stdscr.move(cursor_y, cursor_x)
