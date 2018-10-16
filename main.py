@@ -5,8 +5,8 @@ show_list = '''show list'''
 
 command_list = \
     '''
-    help
-    exit
+       help
+       exit
     '''
 
 show_help = \
@@ -17,21 +17,21 @@ show_help = \
 
 def command_1(stdscr, y):
     if y == 4:
-        stdscr.addstr(y, 1, "command 1", curses.color_pair(3))
+        stdscr.addstr(y, 5, "command 1", curses.color_pair(3))
     else:
-        stdscr.addstr(4, 1, "command 1")
+        stdscr.addstr(4, 5, "command 1")
 
 
 def command_2(stdscr, y):
     if y == 5:
-        stdscr.addstr(y, 1, "command 2", curses.color_pair(3))
+        stdscr.addstr(y, 5, "command 2", curses.color_pair(3))
     else:
-        stdscr.addstr(5, 1, "command 2")
+        stdscr.addstr(5, 5, "command 2")
 
 
 def draw_menu(stdscr):
     user_input = 0
-    cursor_x = 0
+    cursor_x = 4
     cursor_y = 3
 
     # Clear and refresh the screen for a blank canvas
@@ -81,8 +81,12 @@ def draw_menu(stdscr):
 
         cursor_y = max(0, cursor_y)
         cursor_y = min(height - 1, cursor_y)
+        if cursor_y >= 10:
+            curses.flash()
+            cursor_y = min(cursor_y, 9)
 
-        # Declaration of strings & Centering calculations
+
+        # Declaration of strings & Centeqring calculations
         main_pain = "main"[:width - 1]
         start_x_main_pain = int((width // 2) - (len(main_pain) // 2) - len(main_pain) % 2)
         start_y_main_pain = int(((height // 3) * 2) - 2)
